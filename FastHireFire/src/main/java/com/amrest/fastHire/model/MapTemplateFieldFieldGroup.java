@@ -16,7 +16,9 @@ import javax.persistence.Table;
 		@NamedQuery(name = "MapTemplateFieldFieldGroup.findAll", query = "SELECT map FROM MapTemplateFieldFieldGroup map"),
 		@NamedQuery(name = "MapTemplateFieldFieldGroup.findByTemplate", query = "SELECT map FROM MapTemplateFieldFieldGroup map WHERE map.templateId = :templateId"),
 		@NamedQuery(name = "MapTemplateFieldFieldGroup.findByTemplateFieldGroup", query = "SELECT map FROM MapTemplateFieldFieldGroup map WHERE map.templateId = :templateId AND map.fieldGroupId = :fieldGroupId"),
-		@NamedQuery(name = "MapTemplateFieldFieldGroup.findById", query = "SELECT map FROM MapTemplateFieldFieldGroup map WHERE map.templateId = :templateId AND map.fieldGroupId = :fieldGroupId AND map.fieldId = :fieldId")
+		@NamedQuery(name = "MapTemplateFieldFieldGroup.findByTemplateFieldGroupCol", query = "SELECT map FROM MapTemplateFieldFieldGroup map WHERE map.templateId = :templateId AND map.fieldGroupId = :fieldGroupId AND map.fieldColumn = :fieldColumn"),
+		@NamedQuery(name = "MapTemplateFieldFieldGroup.findById", query = "SELECT map FROM MapTemplateFieldFieldGroup map WHERE map.templateId = :templateId AND map.fieldGroupId = :fieldGroupId AND map.fieldId = :fieldId"),
+		@NamedQuery(name = "MapTemplateFieldFieldGroup.findDistinctFieldGroup", query = "SELECT DISTINCT map.fieldGroupId FROM MapTemplateFieldFieldGroup map WHERE map.templateId = :templateId")
 })
 public class MapTemplateFieldFieldGroup {
 	@Id

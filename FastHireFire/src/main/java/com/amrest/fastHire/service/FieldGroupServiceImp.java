@@ -41,7 +41,7 @@ public class FieldGroupServiceImp implements FieldGroupService {
 	}
 
 	@Override
-	public FieldGroup findById(Integer id) {
+	public FieldGroup findById(String id) {
 		FieldGroup item = em.find(FieldGroup.class, id);
 		return item;
 	}

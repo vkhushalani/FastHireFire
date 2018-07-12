@@ -69,4 +69,25 @@ public class MapTemplateFieldFieldGroupServiceImp implements MapTemplateFieldFie
 
 	}
 
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<String> findDistinctFieldGroup(String templateId) {
+		Query query = em.createNamedQuery("MapTemplateFieldFieldGroup.findDistinctFieldGroup")
+				.setParameter("templateId",templateId);
+		List<String> items =  query.getResultList();
+		return items;
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<MapTemplateFieldFieldGroup> findByTemplateFieldGroupCol(String templateId, String fieldGroupId,
+			Integer colNo) {
+		Query query = em.createNamedQuery("MapTemplateFieldFieldGroup.findByTemplateFieldGroupCol")
+				.setParameter("templateId",templateId)
+				.setParameter("fieldGroupId", fieldGroupId)
+				.setParameter("fieldColumn", colNo);
+		List<MapTemplateFieldFieldGroup> items =  query.getResultList();
+		return items;
+	}
+
 }

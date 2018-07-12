@@ -8,6 +8,6 @@ public interface FieldGroupService {
 	public List<FieldGroup> findAll();
 	public FieldGroup update(FieldGroup item);
 	public FieldGroup create(FieldGroup item);
-	public FieldGroup findById(Integer id);
+	public FieldGroup findById(String id);
 	public void deleteByObject(FieldGroup item);
 }
