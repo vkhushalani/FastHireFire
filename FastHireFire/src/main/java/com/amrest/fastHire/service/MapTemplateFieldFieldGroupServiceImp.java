@@ -71,21 +71,21 @@ public class MapTemplateFieldFieldGroupServiceImp implements MapTemplateFieldFie
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<String> findDistinctFieldGroup(String templateId) {
+	public List<Object[]> findDistinctFieldGroup(String templateId) {
 		Query query = em.createNamedQuery("MapTemplateFieldFieldGroup.findDistinctFieldGroup")
 				.setParameter("templateId",templateId);
-		List<String> items =  query.getResultList();
+		List<Object[]> items =  query.getResultList();
 		return items;
 	}
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<MapTemplateFieldFieldGroup> findByTemplateFieldGroupCol(String templateId, String fieldGroupId,
-			Integer colNo) {
-		Query query = em.createNamedQuery("MapTemplateFieldFieldGroup.findByTemplateFieldGroupCol")
+	public List<MapTemplateFieldFieldGroup> findByTemplateFieldGroupManager(String templateId, String fieldGroupId,
+			Boolean isVisibleManager) {
+		Query query = em.createNamedQuery("MapTemplateFieldFieldGroup.findByTemplateFieldGroupManager")
 				.setParameter("templateId",templateId)
 				.setParameter("fieldGroupId", fieldGroupId)
-				.setParameter("fieldColumn", colNo);
+				.setParameter("isVisibleManager", isVisibleManager);
 		List<MapTemplateFieldFieldGroup> items =  query.getResultList();
 		return items;
 	}

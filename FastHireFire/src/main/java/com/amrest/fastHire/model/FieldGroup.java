@@ -6,6 +6,7 @@ import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
 @Table(name = "\"com.amrest.ph.db::Table.FIELD_GROUPS\"", schema = "AMREST_PREHIRE")
@@ -21,6 +22,9 @@ public class FieldGroup {
 	
 	@Column(name = "\"NAME\"",columnDefinition = "VARCHAR(64)")
     private String name;
+	
+	@Transient
+	private Integer sequence;
 
 	public String getId() {
 		return id;
@@ -36,6 +40,14 @@ public class FieldGroup {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public Integer getSequence() {
+		return sequence;
+	}
+
+	public void setSequence(Integer sequence) {
+		this.sequence = sequence;
 	}
 
 }

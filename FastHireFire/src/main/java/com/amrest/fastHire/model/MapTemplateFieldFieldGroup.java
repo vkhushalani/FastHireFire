@@ -16,9 +16,10 @@ import javax.persistence.Table;
 		@NamedQuery(name = "MapTemplateFieldFieldGroup.findAll", query = "SELECT map FROM MapTemplateFieldFieldGroup map"),
 		@NamedQuery(name = "MapTemplateFieldFieldGroup.findByTemplate", query = "SELECT map FROM MapTemplateFieldFieldGroup map WHERE map.templateId = :templateId"),
 		@NamedQuery(name = "MapTemplateFieldFieldGroup.findByTemplateFieldGroup", query = "SELECT map FROM MapTemplateFieldFieldGroup map WHERE map.templateId = :templateId AND map.fieldGroupId = :fieldGroupId"),
-		@NamedQuery(name = "MapTemplateFieldFieldGroup.findByTemplateFieldGroupCol", query = "SELECT map FROM MapTemplateFieldFieldGroup map WHERE map.templateId = :templateId AND map.fieldGroupId = :fieldGroupId AND map.fieldColumn = :fieldColumn"),
+		@NamedQuery(name = "MapTemplateFieldFieldGroup.findByTemplateFieldGroupManager", query = "SELECT map FROM MapTemplateFieldFieldGroup map WHERE map.templateId = :templateId AND map.fieldGroupId = :fieldGroupId AND map.isVisibleManager = :isVisibleManager"),
 		@NamedQuery(name = "MapTemplateFieldFieldGroup.findById", query = "SELECT map FROM MapTemplateFieldFieldGroup map WHERE map.templateId = :templateId AND map.fieldGroupId = :fieldGroupId AND map.fieldId = :fieldId"),
-		@NamedQuery(name = "MapTemplateFieldFieldGroup.findDistinctFieldGroup", query = "SELECT DISTINCT map.fieldGroupId FROM MapTemplateFieldFieldGroup map WHERE map.templateId = :templateId")
+		@NamedQuery(name = "MapTemplateFieldFieldGroup.findDistinctFieldGroup", query = "SELECT DISTINCT map.fieldGroupId , map.fieldGroupSeq FROM MapTemplateFieldFieldGroup map WHERE map.templateId = :templateId")
+		
 })
 public class MapTemplateFieldFieldGroup {
 	@Id
@@ -47,16 +48,19 @@ public class MapTemplateFieldFieldGroup {
 	
 	@Column(name = "\"FIELD_GROUP_SEQ\"", columnDefinition = "INTEGER")
 	private Integer fieldGroupSeq;
+//	
+//	@Column(name = "\"FIELD_ROW\"", columnDefinition = "INTEGER")
+//	private Integer fieldRow;
+//	
+//	
+//	@Column(name = "\"FIELD_COL\"", columnDefinition = "INTEGER")
+//	private Integer fieldColumn;
 	
-	@Column(name = "\"FIELD_ROW\"", columnDefinition = "INTEGER")
-	private Integer fieldRow;
+	@Column(name = "\"FIELD_SEQ\"", columnDefinition = "INTEGER")
+	private Integer fieldSeq;
 	
-	
-	@Column(name = "\"FIELD_COL\"", columnDefinition = "INTEGER")
-	private Integer fieldColumn;
-	
-	@Column(name = "\"DEFAULT_VALUE\"", columnDefinition = "VARCHAR(32)")
-	private String defaultValue;
+	@Column(name = "\"VALUE\"", columnDefinition = "VARCHAR(32)")
+	private String value;
 	
 	@Column(name = "\"IS_EDITABLE_MANAGER\"", columnDefinition = "BOOLEAN")
 	private Boolean isEditableManager;
@@ -108,28 +112,28 @@ public class MapTemplateFieldFieldGroup {
 		this.fieldGroupSeq = fieldGroupSeq;
 	}
 
-	public Integer getFieldRow() {
-		return fieldRow;
+//	public Integer getFieldRow() {
+//		return fieldRow;
+//	}
+//
+//	public void setFieldRow(Integer fieldRow) {
+//		this.fieldRow = fieldRow;
+//	}
+//
+//	public Integer getFieldColumn() {
+//		return fieldColumn;
+//	}
+//
+//	public void setFieldColumn(Integer fieldColumn) {
+//		this.fieldColumn = fieldColumn;
+//	}
+
+	public String getValue() {
+		return value;
 	}
 
-	public void setFieldRow(Integer fieldRow) {
-		this.fieldRow = fieldRow;
-	}
-
-	public Integer getFieldColumn() {
-		return fieldColumn;
-	}
-
-	public void setFieldColumn(Integer fieldColumn) {
-		this.fieldColumn = fieldColumn;
-	}
-
-	public String getDefaultValue() {
-		return defaultValue;
-	}
-
-	public void setDefaultValue(String defaultValue) {
-		this.defaultValue = defaultValue;
+	public void setValue(String value) {
+		this.value = value;
 	}
 
 	public Boolean getIsEditableManager() {
@@ -202,5 +206,13 @@ public class MapTemplateFieldFieldGroup {
 
 	public void setIsMandatoryManager(Boolean isMandatoryManager) {
 		this.isMandatoryManager = isMandatoryManager;
+	}
+
+	public Integer getFieldSeq() {
+		return fieldSeq;
+	}
+
+	public void setFieldSeq(Integer fieldSeq) {
+		this.fieldSeq = fieldSeq;
 	}
 }

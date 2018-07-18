@@ -10,8 +10,8 @@ public interface MapTemplateFieldFieldGroupService {
 	public MapTemplateFieldFieldGroup findById(String templateId , String fieldGroupId, String fieldId);
 	public List<MapTemplateFieldFieldGroup>  findByTemplate(String templateId);
 	public List<MapTemplateFieldFieldGroup>  findByTemplateFieldGroup(String templateId,String fieldGroupId);
-	public List<MapTemplateFieldFieldGroup>  findByTemplateFieldGroupCol(String templateId,String fieldGroupId,Integer colNo);
-	public List<String> findDistinctFieldGroup (String templateId);
+	public List<MapTemplateFieldFieldGroup>  findByTemplateFieldGroupManager(String templateId,String fieldGroupId,Boolean isVisibleManager);
+	public List<Object[]> findDistinctFieldGroup (String templateId);
 	public void deleteByObject(MapTemplateFieldFieldGroup item);
 	
 }

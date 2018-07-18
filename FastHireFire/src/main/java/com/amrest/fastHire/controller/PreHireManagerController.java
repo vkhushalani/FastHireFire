@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.amrest.fastHire.model.FieldGroup;
 import com.amrest.fastHire.model.MapCountryBusinessUnitTemplate;
-import com.amrest.fastHire.model.MapTemplateFieldFieldGroup;
 import com.amrest.fastHire.model.Template;
 import com.amrest.fastHire.service.FieldGroupService;
 import com.amrest.fastHire.service.MapCountryBusinessUnitTemplateService;
@@ -63,23 +62,26 @@ public class PreHireManagerController {
 		if(template !=null)
 		{
 //			List<MapTemplateFieldFieldGroup> templateFields = mapTemplateFieldFieldGroupService.findByTemplate(template.getId());
-			List<String> templateFieldGroups = mapTemplateFieldFieldGroupService.findDistinctFieldGroup(template.getId());
+			List<Object[]> templateFieldGroups = mapTemplateFieldFieldGroupService.findDistinctFieldGroup(template.getId());
 			if(templateFieldGroups.size() !=0)
 			{	logger.debug("templateFieldGroups"+templateFieldGroups);
 				
-				for(String tFieldGroup :templateFieldGroups)
+				for(Object[] tFieldGroup :templateFieldGroups)
 				{
-					logger.debug("fieldGrouID"+tFieldGroup);
+					logger.debug("fieldGrouID"+tFieldGroup[0]);
 					JSONObject fieldObject = new JSONObject();
 					Gson gson = new Gson();
-					logger.debug(""+fieldGroupService.findById(tFieldGroup));
-					FieldGroup fGroup = fieldGroupService.findById(tFieldGroup);
+					logger.debug(""+tFieldGroup[1]);
+					FieldGroup fGroup = fieldGroupService.findById(tFieldGroup[0].toString());
+					fGroup.setSequence((Integer)tFieldGroup[1]);
 					if(fGroup !=null){
 				    String jsonString = gson.toJson(fGroup);
 					fieldObject.put("fieldGroup",new JSONObject(jsonString));
-					fieldObject.put("fieldsCol1", mapTemplateFieldFieldGroupService.findByTemplateFieldGroupCol(template.getId(), tFieldGroup,1));
-					fieldObject.put("fieldsCol2", mapTemplateFieldFieldGroupService.findByTemplateFieldGroupCol(template.getId(), tFieldGroup ,2));
+					fieldObject.put("fields",mapTemplateFieldFieldGroupService.findByTemplateFieldGroupManager(template.getId(), tFieldGroup[0].toString(),true));
+//					fieldObject.put("fieldsCol1", mapTemplateFieldFieldGroupService.findByTemplateFieldGroupCol(template.getId(), tFieldGroup[0].toString(),1));
+//					fieldObject.put("fieldsCol2", mapTemplateFieldFieldGroupService.findByTemplateFieldGroupCol(template.getId(), tFieldGroup[0].toString() ,2));
 					returnArray.put(fieldObject);
+					
 					}
 				}
 					

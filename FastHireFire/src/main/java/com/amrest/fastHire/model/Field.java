@@ -24,7 +24,7 @@ public class Field {
 	@Column(name = "\"TECHNICAL_FIELD_NAME\"",columnDefinition = "VARCHAR(32)")
     private String technicalName;
 	
-	@Column(name = "\"FIELD_TYPE\"",columnDefinition = "VARCHAR(5)")
+	@Column(name = "\"FIELD_TYPE\"",columnDefinition = "VARCHAR(15)")
     private String fieldType;
 	
 	@Column(name = "\"LENGTH\"",columnDefinition = "INTEGER")
@@ -35,6 +35,9 @@ public class Field {
 	
 	@Column(name = "\"DEFAULT_VALUE\"",columnDefinition = "VARCHAR(32)")
     private String defaultValue;
+	
+	@Column(name = "\"DATA_TYPE\"",columnDefinition = "VARCHAR(32)")
+    private String dataType;
 
 	public String getId() {
 		return id;
@@ -90,6 +93,14 @@ public class Field {
 
 	public void setDefaultValue(String defaultValue) {
 		this.defaultValue = defaultValue;
+	}
+
+	public String getDataType() {
+		return dataType;
+	}
+
+	public void setDataType(String dataType) {
+		this.dataType = dataType;
 	}
 	
 	
