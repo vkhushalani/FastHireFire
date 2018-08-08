@@ -8,7 +8,7 @@ public interface BusinessUnitService {
 	public List<BusinessUnit> findAll();
 	public BusinessUnit update(BusinessUnit item);
 	public BusinessUnit create(BusinessUnit item);
-	public BusinessUnit findById(Integer id);
+	public BusinessUnit findById(String id);
 	public BusinessUnit findDefaultBusinessUnit(Boolean isDefault);
 	public void deleteByObject(BusinessUnit item);
 }

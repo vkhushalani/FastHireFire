@@ -8,6 +8,6 @@ public interface CountryService {
 	public List<Country> findAll();
 	public Country update(Country item);
 	public Country create(Country item);
-	public Country findById(Integer id);
+	public Country findById(String id);
 	public void deleteByObject(Country item);
 }

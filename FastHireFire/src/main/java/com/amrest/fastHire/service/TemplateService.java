@@ -8,7 +8,7 @@ public interface TemplateService {
 	public List<Template> findAll();
 	public Template update(Template item);
 	public Template create(Template item);
-	public Template findById(Integer id);
+	public Template findById(String id);
 	public Template findDefaultTemplate(Boolean isDefault);
 	public void deleteByObject(Template item);
 }

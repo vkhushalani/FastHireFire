@@ -1,10 +1,10 @@
 package com.amrest.fastHire.model;
 
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -12,7 +12,7 @@ import javax.persistence.Table;
 
 
 @Entity
-@Table(name = "\"com.amrest.ph.db::Table.BUSINESS_UNITS\"", schema = "AMREST_PREHIRE")
+@Table(name = "\"com.amrest.ph.db::Table.FHD_BUSINESS_UNITS\"", schema = "AMREST_PREHIRE")
 @NamedQueries({ 
 		@NamedQuery(name = "BusinessUnit.findAll", query = "SELECT bu FROM BusinessUnit bu"),
 		@NamedQuery(name = "BusinessUnit.findDefaultBusinessUnit", query = "SELECT bu FROM BusinessUnit bu WHERE bu.isDefault = :isDefault")
@@ -21,9 +21,8 @@ import javax.persistence.Table;
 public class BusinessUnit {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "\"ID\"", columnDefinition = "INTEGER")
-	private Integer id;
+	@Column(name = "\"ID\"", columnDefinition = "VARCHAR(32)")
+	private String id;
 	
 	@Column(name = "\"NAME\"",columnDefinition = "VARCHAR(32)")
      private String name;
@@ -31,12 +30,21 @@ public class BusinessUnit {
 	@Column(name = "\"IS_DEFAULT\"",columnDefinition = "BOOLEAN")
     private Boolean isDefault;
 	
+	@Column(name = "\"CREATED_ON\"",columnDefinition = "SECONDDATE")
+    private Date createdOn;
+	
+	@Column(name = "\"START_DATE\"",columnDefinition = "SECONDDATE")
+    private Date startDate;
+	
+	@Column(name = "\"END_DATE\"",columnDefinition = "SECONDDATE")
+    private Date endDate;
+	
 
-	public Integer getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 
@@ -54,6 +62,30 @@ public class BusinessUnit {
 
 	public void setIsDefault(Boolean isDefault) {
 		this.isDefault = isDefault;
+	}
+
+	public Date getCreatedOn() {
+		return createdOn;
+	}
+
+	public void setCreatedOn(Date createdOn) {
+		this.createdOn = createdOn;
+	}
+
+	public Date getStartDate() {
+		return startDate;
+	}
+
+	public void setStartDate(Date startDate) {
+		this.startDate = startDate;
+	}
+
+	public Date getEndDate() {
+		return endDate;
+	}
+
+	public void setEndDate(Date endDate) {
+		this.endDate = endDate;
 	}
 
 }

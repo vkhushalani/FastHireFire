@@ -41,7 +41,7 @@ public class TemplateServiceImp implements TemplateService {
 	}
 
 	@Override
-	public Template findById(Integer id) {
+	public Template findById(String id) {
 		Template item = em.find(Template.class, id);
 		return item;
 	}

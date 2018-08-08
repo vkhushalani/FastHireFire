@@ -33,31 +33,28 @@ public class MapCountryBusinessUnitTemplateServiceImp implements MapCountryBusin
 	       return item;
 	}
 
+
 	@Override
-	public MapCountryBusinessUnitTemplate findById(Integer countryId, Integer businessUnitId, String templateId) {
-		Query query = em.createNamedQuery("MapCountryBusinessUnitTemplate.findById")
-				.setParameter("countryId",countryId)
-				.setParameter("businessUnitId", businessUnitId)
-				.setParameter("templateId", templateId);
-		MapCountryBusinessUnitTemplate item = (MapCountryBusinessUnitTemplate) query.getSingleResult();
+	public MapCountryBusinessUnitTemplate findById(String id) {
+		MapCountryBusinessUnitTemplate item = em.find(MapCountryBusinessUnitTemplate.class, id);
 		return item;
 	}
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<MapCountryBusinessUnitTemplate> findByCountry(Integer countryId) {
-		Query query = em.createNamedQuery("MapCountryBusinessUnitTemplate.findByCountry")
-				.setParameter("countryId",countryId);
+	public List<MapCountryBusinessUnitTemplate> findByCountryBusinessUnitId(String countryBusinessUnitId) {
+		Query query = em.createNamedQuery("MapCountryBusinessUnitTemplate.findByCountryBusinessUnitId")
+				.setParameter("countryBusinessUnitId",countryBusinessUnitId);
 		List<MapCountryBusinessUnitTemplate> items =  query.getResultList();
 		return items;
 	}
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<MapCountryBusinessUnitTemplate> findByCountryBusinessUnit(Integer countryId, Integer businessUnitId) {
-		Query query = em.createNamedQuery("MapCountryBusinessUnitTemplate.findByCountryBusinessUnit")
-				.setParameter("countryId",countryId)
-				.setParameter("businessUnitId", businessUnitId);
+	public List<MapCountryBusinessUnitTemplate> findByCountryBusinessUnitTemplate(String countryBusinessUnitId, String templateId) {
+		Query query = em.createNamedQuery("MapCountryBusinessUnitTemplate.findByCountryBusinessUnitTemplate")
+				.setParameter("countryBusinessUnitId",countryBusinessUnitId)
+				.setParameter("templateId", templateId);
 		List<MapCountryBusinessUnitTemplate> items =  query.getResultList();
 		return items;
 	}

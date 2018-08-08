@@ -41,7 +41,7 @@ public class CountryServiceImp implements CountryService {
 	}
 
 	@Override
-	public Country findById(Integer id) {
+	public Country findById(String id) {
 		Country item = em.find(Country.class, id);
 		return item;
 	}

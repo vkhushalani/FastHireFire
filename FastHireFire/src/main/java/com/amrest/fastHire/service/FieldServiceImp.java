@@ -41,7 +41,7 @@ public class FieldServiceImp implements FieldService {
 	}
 
 	@Override
-	public Field findById(Integer id) {
+	public Field findById(String id) {
 		Field item = em.find(Field.class, id);
 		return item;
 	}

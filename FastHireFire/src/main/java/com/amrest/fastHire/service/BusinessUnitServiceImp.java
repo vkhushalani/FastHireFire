@@ -41,7 +41,7 @@ public class BusinessUnitServiceImp implements BusinessUnitService {
 	}
 
 	@Override
-	public BusinessUnit findById(Integer id) {
+	public BusinessUnit findById(String id) {
 		BusinessUnit item = em.find(BusinessUnit.class, id);
 		return item;
 	}

@@ -1,5 +1,7 @@
 package com.amrest.fastHire.model;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -8,23 +10,23 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "\"com.amrest.ph.db::Table.FIELDS\"", schema = "AMREST_PREHIRE")
+@Table(name = "\"com.amrest.ph.db::Table.FHD_FIELDS\"", schema = "AMREST_PREHIRE")
 @NamedQueries({ 
 		@NamedQuery(name = "Field.findAll", query = "SELECT f FROM Field f")
 		
 })
 public class Field {
 	@Id
-	@Column(name = "\"ID\"", columnDefinition = "VARCHAR(10)")
+	@Column(name = "\"ID\"", columnDefinition = "VARCHAR(32)")
 	private String id;
 	
-	@Column(name = "\"NAME\"",columnDefinition = "VARCHAR(64)")
+	@Column(name = "\"NAME\"",columnDefinition = "VARCHAR(32)")
     private String name;
 	
 	@Column(name = "\"TECHNICAL_FIELD_NAME\"",columnDefinition = "VARCHAR(32)")
     private String technicalName;
 	
-	@Column(name = "\"FIELD_TYPE\"",columnDefinition = "VARCHAR(15)")
+	@Column(name = "\"FIELD_TYPE\"",columnDefinition = "VARCHAR(16)")
     private String fieldType;
 	
 	@Column(name = "\"LENGTH\"",columnDefinition = "INTEGER")
@@ -38,6 +40,15 @@ public class Field {
 	
 	@Column(name = "\"DATA_TYPE\"",columnDefinition = "VARCHAR(32)")
     private String dataType;
+	
+	@Column(name = "\"CREATED_ON\"",columnDefinition = "SECONDDATE")
+    private Date createdOn;
+	
+	@Column(name = "\"START_DATE\"",columnDefinition = "SECONDDATE")
+    private Date startDate;
+	
+	@Column(name = "\"END_DATE\"",columnDefinition = "SECONDDATE")
+    private Date endDate;
 
 	public String getId() {
 		return id;
@@ -101,6 +112,30 @@ public class Field {
 
 	public void setDataType(String dataType) {
 		this.dataType = dataType;
+	}
+
+	public Date getCreatedOn() {
+		return createdOn;
+	}
+
+	public void setCreatedOn(Date createdOn) {
+		this.createdOn = createdOn;
+	}
+
+	public Date getStartDate() {
+		return startDate;
+	}
+
+	public void setStartDate(Date startDate) {
+		this.startDate = startDate;
+	}
+
+	public Date getEndDate() {
+		return endDate;
+	}
+
+	public void setEndDate(Date endDate) {
+		this.endDate = endDate;
 	}
 	
 	

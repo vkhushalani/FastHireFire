@@ -10,7 +10,7 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "\"com.amrest.ph.db::Table.HIRING_TEMPLATE\"", schema = "AMREST_PREHIRE")
+@Table(name = "\"com.amrest.ph.db::Table.FHD_HIRING_TEMPLATES\"", schema = "AMREST_PREHIRE")
 @NamedQueries({ 
 		@NamedQuery(name = "Template.findAll", query = "SELECT t FROM Template t"),
 		@NamedQuery(name = "Template.findDefaultTemplate", query = "SELECT t FROM Template t WHERE t.isDefault = :isDefault")
@@ -18,7 +18,7 @@ import javax.persistence.Table;
 })
 public class Template {
 	@Id
-	@Column(name = "\"ID\"", columnDefinition = "VARCHAR(10)")
+	@Column(name = "\"ID\"", columnDefinition = "VARCHAR(32)")
 	private String id;
 	
 	@Column(name = "\"NAME\"",columnDefinition = "VARCHAR(32)")
@@ -27,17 +27,20 @@ public class Template {
 	@Column(name = "\"STATUS\"", columnDefinition = "BOOLEAN")
 	private Boolean status;
 	
-	@Column(name = "\"EFFECTIVE_DATE\"",columnDefinition = "SECONDDATE")
-     private Date effectiveDate;
-	
-	@Column(name = "\"CHANGED_BY\"", columnDefinition = "VARCHAR(10)")
-	private String changedBy;
-	
 	@Column(name = "\"CATEGORY\"",columnDefinition = "VARCHAR(32)")
      private String category;
 	
 	@Column(name = "\"IS_DEFAULT\"", columnDefinition = "BOOLEAN")
 	private Boolean isDefault;
+	
+	@Column(name = "\"CREATED_ON\"",columnDefinition = "SECONDDATE")
+    private Date createdOn;
+	
+	@Column(name = "\"START_DATE\"",columnDefinition = "SECONDDATE")
+    private Date startDate;
+	
+	@Column(name = "\"END_DATE\"",columnDefinition = "SECONDDATE")
+    private Date endDate;
 
 	public String getId() {
 		return id;
@@ -63,22 +66,6 @@ public class Template {
 		this.status = status;
 	}
 
-	public Date getEffectiveDate() {
-		return effectiveDate;
-	}
-
-	public void setEffectiveDate(Date effectiveDate) {
-		this.effectiveDate = effectiveDate;
-	}
-
-	public String getChangedBy() {
-		return changedBy;
-	}
-
-	public void setChangedBy(String changedBy) {
-		this.changedBy = changedBy;
-	}
-
 	public String getCategory() {
 		return category;
 	}
@@ -93,6 +80,30 @@ public class Template {
 
 	public void setIsDefault(Boolean isDefault) {
 		this.isDefault = isDefault;
+	}
+
+	public Date getCreatedOn() {
+		return createdOn;
+	}
+
+	public void setCreatedOn(Date createdOn) {
+		this.createdOn = createdOn;
+	}
+
+	public Date getStartDate() {
+		return startDate;
+	}
+
+	public void setStartDate(Date startDate) {
+		this.startDate = startDate;
+	}
+
+	public Date getEndDate() {
+		return endDate;
+	}
+
+	public void setEndDate(Date endDate) {
+		this.endDate = endDate;
 	}
 	
 }

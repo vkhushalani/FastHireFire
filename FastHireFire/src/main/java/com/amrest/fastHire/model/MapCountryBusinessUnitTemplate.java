@@ -1,93 +1,77 @@
 package com.amrest.fastHire.model;
 
-import javax.persistence.CascadeType;
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "\"com.amrest.ph.db::Table.MAP_BUSINESS_UNIT_TEMPLATE\"", schema = "AMREST_PREHIRE")
+@Table(name = "\"com.amrest.ph.db::Table.FHD_MAP_COUNTRY_UNIT_TEMPLATES\"", schema = "AMREST_PREHIRE")
 @NamedQueries({ 
-		@NamedQuery(name = "MapCountryBusinessUnitTemplate.findAll", query = "SELECT map FROM MapCountryBusinessUnitTemplate map"),
-		@NamedQuery(name = "MapCountryBusinessUnitTemplate.findByCountry", query = "SELECT map FROM MapCountryBusinessUnitTemplate map WHERE map.countryId = :countryId"),
-		@NamedQuery(name = "MapCountryBusinessUnitTemplate.findByCountryBusinessUnit", query = "SELECT map FROM MapCountryBusinessUnitTemplate map WHERE map.countryId = :countryId AND map.businessUnitId = :businessUnitId"),
-		@NamedQuery(name = "MapCountryBusinessUnitTemplate.findById", query = "SELECT map FROM MapCountryBusinessUnitTemplate map WHERE map.countryId = :countryId AND map.businessUnitId = :businessUnitId AND map.templateId = :templateId")
+		@NamedQuery(name = "MapCountryBusinessUnitTemplate.findAll", query = "SELECT t FROM MapCountryBusinessUnitTemplate t"),
+		@NamedQuery(name = "MapCountryBusinessUnitTemplate.findByCountryBusinessUnitId", query = "SELECT t FROM MapCountryBusinessUnitTemplate t WHERE t.countryBusinessUnitId = :countryBusinessUnitId"),
+		@NamedQuery(name = "MapCountryBusinessUnitTemplate.findByCountryBusinessUnitTemplate", query = "SELECT t FROM MapCountryBusinessUnitTemplate t WHERE t.countryBusinessUnitId = :countryBusinessUnitId AND t.templateId = :templateId")
 })
 public class MapCountryBusinessUnitTemplate {
 	
 	@Id
-	@Column(name = "\"COUNTRY.ID\"", columnDefinition = "INTEGER")
-	private Integer countryId;
+	@Column(name = "\"ID\"", columnDefinition = "VARCHAR(32)")
+	private String id;
 	
-	@Id
-	@Column(name = "\"BUS_UNIT.ID\"", columnDefinition = "INTEGER")
-	private Integer businessUnitId;
+	@Column(name = "\"COUNTRY_BUSINESS_UNIT.ID\"", columnDefinition = "VARCHAR(32)")
+	private String countryBusinessUnitId;
 	
-	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name="\"BUS_UNIT.ID\"",referencedColumnName="\"ID\"",insertable=false, updatable=false)
-	private BusinessUnit businessUnit;
-	
-	@Id
-	@Column(name = "\"TEMPLATE.ID\"", columnDefinition = "VARCHAR(10)")
+	@Column(name = "\"HIRING_TEMPLATE.ID\"", columnDefinition = "VARCHAR(32)")
 	private String templateId;
 	
-	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name="\"TEMPLATE.ID\"",referencedColumnName="\"ID\"",insertable=false, updatable=false)
-	private Template template;
+	@Column(name = "\"START_DATE\"",columnDefinition = "SECONDDATE")
+    private Date startDate;
+	
+	@Column(name = "\"END_DATE\"",columnDefinition = "SECONDDATE")
+    private Date endDate;
 
-
-	public Integer getCountryId() {
-		return countryId;
+	public String getId() {
+		return id;
 	}
 
-
-	public void setCountryId(Integer countryId) {
-		this.countryId = countryId;
+	public void setId(String id) {
+		this.id = id;
 	}
 
-
-	public Integer getBusinessUnitId() {
-		return businessUnitId;
+	public String getCountryBusinessUnitId() {
+		return countryBusinessUnitId;
 	}
 
-
-	public void setBusinessUnitId(Integer businessUnitId) {
-		this.businessUnitId = businessUnitId;
+	public void setCountryBusinessUnitId(String countryBusinessUnitId) {
+		this.countryBusinessUnitId = countryBusinessUnitId;
 	}
-
 
 	public String getTemplateId() {
 		return templateId;
 	}
 
-
 	public void setTemplateId(String templateId) {
 		this.templateId = templateId;
 	}
 
-
-	public BusinessUnit getBusinessUnit() {
-		return businessUnit;
+	public Date getStartDate() {
+		return startDate;
 	}
 
-
-	public void setBusinessUnit(BusinessUnit businessUnit) {
-		this.businessUnit = businessUnit;
+	public void setStartDate(Date startDate) {
+		this.startDate = startDate;
 	}
 
-
-	public Template getTemplate() {
-		return template;
+	public Date getEndDate() {
+		return endDate;
 	}
 
-
-	public void setTemplate(Template template) {
-		this.template = template;
+	public void setEndDate(Date endDate) {
+		this.endDate = endDate;
 	}
 
 }

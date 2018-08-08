@@ -8,6 +8,6 @@ public interface FieldService {
 	public List<Field> findAll();
 	public Field update(Field item);
 	public Field create(Field item);
-	public Field findById(Integer id);
+	public Field findById(String id);
 	public void deleteByObject(Field item);
 }
