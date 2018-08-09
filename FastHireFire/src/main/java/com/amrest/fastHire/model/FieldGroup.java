@@ -8,6 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
 @Table(name = "\"com.amrest.ph.db::Table.FHD_FIELD_GROUPS\"", schema = "AMREST_PREHIRE")
@@ -32,7 +33,9 @@ public class FieldGroup {
 	
 	@Column(name = "\"END_DATE\"",columnDefinition = "SECONDDATE")
     private Date endDate;
-
+	
+	@Transient 
+	private Integer fieldGroupSeq; 
 
 	public String getId() {
 		return id;
@@ -72,6 +75,14 @@ public class FieldGroup {
 
 	public void setEndDate(Date endDate) {
 		this.endDate = endDate;
+	}
+
+	public Integer getFieldGroupSeq() {
+		return fieldGroupSeq;
+	}
+
+	public void setFieldGroupSeq(Integer fieldGroupSeq) {
+		this.fieldGroupSeq = fieldGroupSeq;
 	}
 
 }

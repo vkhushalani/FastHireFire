@@ -9,6 +9,6 @@ public interface MapTemplateFieldGroupService {
 	public MapTemplateFieldGroup create(MapTemplateFieldGroup item);
 	public MapTemplateFieldGroup findById(String id);
 	public List<MapTemplateFieldGroup> findByTemplate(String templateId);
-	public List<MapTemplateFieldGroup> findByTemplateFieldGroupField(String templateId,String fieldGroupFieldId);
+	public List<MapTemplateFieldGroup> findByTemplateFieldGroup(String templateId,String fieldGroupId);
 	public void deleteByObject(MapTemplateFieldGroup item);
 }

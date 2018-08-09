@@ -51,9 +51,9 @@ public class MapTemplateFieldGroupServiceImp implements MapTemplateFieldGroupSer
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<MapTemplateFieldGroup> findByTemplateFieldGroupField(String templateId, String fieldGroupFieldId) {
-		Query query = em.createNamedQuery("MapTemplateFieldGroup.findByTemplateFieldGroupField")
-				.setParameter("fieldGroupFieldId",fieldGroupFieldId)
+	public List<MapTemplateFieldGroup> findByTemplateFieldGroup(String templateId, String fieldGroupId) {
+		Query query = em.createNamedQuery("MapTemplateFieldGroup.findByTemplateFieldGroup")
+				.setParameter("fieldGroupId",fieldGroupId)
 				.setParameter("templateId", templateId);
 		List<MapTemplateFieldGroup> items =  query.getResultList();
 		return items;

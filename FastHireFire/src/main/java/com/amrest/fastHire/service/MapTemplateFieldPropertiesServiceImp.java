@@ -55,10 +55,9 @@ public class MapTemplateFieldPropertiesServiceImp implements MapTemplateFieldPro
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<MapTemplateFieldProperties> findByTemplateFieldGroupFieldManager(String templateFieldGroupId,String fieldId,Boolean isVisibleManager) {
-		Query query = em.createNamedQuery("MapTemplateFieldProperties.findByTemplateFieldGroupField")
+	public List<MapTemplateFieldProperties> findByTemplateFieldGroupManager(String templateFieldGroupId,Boolean isVisibleManager) {
+		Query query = em.createNamedQuery("MapTemplateFieldProperties.findByTemplateFieldGroupManager")
 				.setParameter("templateFieldGroupId",templateFieldGroupId)
-				.setParameter("fieldId", fieldId)
 				.setParameter("isVisibleManager", isVisibleManager);
 		List<MapTemplateFieldProperties> items =  query.getResultList();
 		return items;

@@ -2,9 +2,12 @@ package com.amrest.fastHire.model;
 
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
@@ -12,7 +15,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "\"com.amrest.ph.db::Table.FHD_MAP_FIELD_GROUP_FIELDS\"", schema = "AMREST_PREHIRE")
 @NamedQueries({ 
-		@NamedQuery(name = "MapFieldFieldGroup.findAll", query = "SELECT map FROM MapFieldFieldGroup map"),
+		@NamedQuery(name = "MapFieldFieldGroup.findAll", query = "SELECT map FROM MapFieldFieldGroup map WHERE :todayDate BETWEEN map.startDate AND map.endDate"),
 		@NamedQuery(name = "MapFieldFieldGroup.findByFieldGroupId", query = "SELECT map FROM MapFieldFieldGroup map WHERE map.fieldGroupId = :fieldGroupId"),
 		@NamedQuery(name = "MapFieldFieldGroup.findByFieldGroupFieldId", query = "SELECT map FROM MapFieldFieldGroup map WHERE map.fieldGroupId = :fieldGroupId AND map.fieldId = :fieldId")
 })
@@ -24,8 +27,16 @@ public class MapFieldFieldGroup {
 	@Column(name = "\"FIELD_GROUP.ID\"", columnDefinition = "VARCHAR(32)")
 	private String fieldGroupId;
 	
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name="\"FIELD_GROUP.ID\"",referencedColumnName="\"ID\"",insertable=false, updatable=false)
+	private FieldGroup fieldGroup;
+	
 	@Column(name = "\"FIELD.ID\"", columnDefinition = "VARCHAR(32)")
 	private String fieldId;
+	
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name="\"FIELD.ID\"",referencedColumnName="\"ID\"",insertable=false, updatable=false)
+	private Field field;
 	
 	@Column(name = "\"START_DATE\"",columnDefinition = "SECONDDATE")
     private Date startDate;
@@ -71,6 +82,22 @@ public class MapFieldFieldGroup {
 
 	public void setEndDate(Date endDate) {
 		this.endDate = endDate;
+	}
+
+	public FieldGroup getFieldGroup() {
+		return fieldGroup;
+	}
+
+	public void setFieldGroup(FieldGroup fieldGroup) {
+		this.fieldGroup = fieldGroup;
+	}
+
+	public Field getField() {
+		return field;
+	}
+
+	public void setField(Field field) {
+		this.field = field;
 	}
 
 }

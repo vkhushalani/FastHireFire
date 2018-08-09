@@ -49,14 +49,14 @@ public class MapCountryBusinessUnitServiceImp implements MapCountryBusinessUnitS
 		return items;
 	}
 
-	@SuppressWarnings("unchecked")
+
 	@Override
-	public List<MapCountryBusinessUnit> findByCountryBusinessUnit(String countryId, String businessUnitId) {
+	public MapCountryBusinessUnit findByCountryBusinessUnit(String countryId, String businessUnitId) {
 		Query query = em.createNamedQuery("MapCountryBusinessUnit.findByCountryBusinessUnit")
 				.setParameter("businessUnitId",businessUnitId)
 				.setParameter("countryId", countryId);
-		List<MapCountryBusinessUnit> items =  query.getResultList();
-		return items;
+		MapCountryBusinessUnit item =  (MapCountryBusinessUnit) query.getSingleResult();
+		return item;
 	}
 
 	@Override

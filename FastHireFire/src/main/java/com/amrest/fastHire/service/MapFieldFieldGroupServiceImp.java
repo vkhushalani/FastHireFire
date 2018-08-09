@@ -1,5 +1,6 @@
 package com.amrest.fastHire.service;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -21,7 +22,8 @@ public class MapFieldFieldGroupServiceImp implements MapFieldFieldGroupService {
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<MapFieldFieldGroup> findAll() {
-		Query query = em.createNamedQuery("MapFieldFieldGroup.findAll");
+		Query query = em.createNamedQuery("MapFieldFieldGroup.findAll")
+						.setParameter("todayDate", new Date());
 		 List<MapFieldFieldGroup> items = query.getResultList();
 	        return items;
 	}

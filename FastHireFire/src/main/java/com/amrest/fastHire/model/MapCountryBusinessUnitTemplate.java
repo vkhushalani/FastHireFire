@@ -2,9 +2,12 @@ package com.amrest.fastHire.model;
 
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
@@ -27,6 +30,10 @@ public class MapCountryBusinessUnitTemplate {
 	
 	@Column(name = "\"HIRING_TEMPLATE.ID\"", columnDefinition = "VARCHAR(32)")
 	private String templateId;
+	
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name="\"HIRING_TEMPLATE.ID\"",referencedColumnName="\"ID\"",insertable=false, updatable=false)
+	private Template template;
 	
 	@Column(name = "\"START_DATE\"",columnDefinition = "SECONDDATE")
     private Date startDate;
@@ -72,6 +79,14 @@ public class MapCountryBusinessUnitTemplate {
 
 	public void setEndDate(Date endDate) {
 		this.endDate = endDate;
+	}
+
+	public Template getTemplate() {
+		return template;
+	}
+
+	public void setTemplate(Template template) {
+		this.template = template;
 	}
 
 }

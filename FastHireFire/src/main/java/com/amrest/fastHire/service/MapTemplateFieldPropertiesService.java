@@ -9,7 +9,7 @@ public interface MapTemplateFieldPropertiesService {
 	public MapTemplateFieldProperties create(MapTemplateFieldProperties item);
 	public MapTemplateFieldProperties findById(String templateFieldGroupId, String fieldId);
 	public List<MapTemplateFieldProperties> findByTemplateFieldGroup(String templateFieldGroupId);
-	public List<MapTemplateFieldProperties> findByTemplateFieldGroupFieldManager(String templateFieldGroupId,String fieldId,Boolean isVisibleManager);
+	public List<MapTemplateFieldProperties> findByTemplateFieldGroupManager(String templateFieldGroupId,Boolean isVisibleManager);
 	public void deleteByObject(MapTemplateFieldProperties item);
 
 }

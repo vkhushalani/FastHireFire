@@ -2,6 +2,7 @@ package com.amrest.fastHire.model;
 
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -17,7 +18,7 @@ import javax.persistence.Table;
 @NamedQueries({ 
 		@NamedQuery(name = "MapTemplateFieldProperties.findAll", query = "SELECT map FROM MapTemplateFieldProperties map"),
 		@NamedQuery(name = "MapTemplateFieldProperties.findByTemplateFieldGroup", query = "SELECT map FROM MapTemplateFieldProperties map WHERE map.templateFieldGroupId = :templateFieldGroupId"),
-		@NamedQuery(name = "MapTemplateFieldProperties.findByTemplateFieldGroupFieldManager", query = "SELECT map FROM MapTemplateFieldProperties map WHERE map.fieldId = :fieldId AND map.templateFieldGroupId = :templateFieldGroupId AND map.isVisibleManager = :isVisibleManager"),
+		@NamedQuery(name = "MapTemplateFieldProperties.findByTemplateFieldGroupManager", query = "SELECT map FROM MapTemplateFieldProperties map WHERE map.templateFieldGroupId = :templateFieldGroupId AND map.isVisibleManager = :isVisibleManager"),
 		@NamedQuery(name = "MapTemplateFieldProperties.findById", query = "SELECT map FROM MapTemplateFieldProperties map WHERE map.templateFieldGroupId = :templateFieldGroupId AND map.fieldId = :fieldId")
 		
 })
@@ -30,7 +31,7 @@ public class MapTemplateFieldProperties{
 	@Column(name = "\"FIELD.ID\"", columnDefinition = "VARCHAR(32)")
 	private String fieldId;
 	
-	@ManyToOne
+	@ManyToOne (cascade = CascadeType.ALL)
 	@JoinColumn(name="\"FIELD.ID\"",referencedColumnName="\"ID\"",insertable=false, updatable=false)
 	private Field field;
 	

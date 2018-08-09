@@ -9,6 +9,6 @@ public interface MapCountryBusinessUnitService {
 	public MapCountryBusinessUnit create(MapCountryBusinessUnit item);
 	public MapCountryBusinessUnit findById(String id);
 	public List<MapCountryBusinessUnit> findByCountry(String countryId);
-	public List<MapCountryBusinessUnit> findByCountryBusinessUnit(String countryId, String businessUnitId);
+	public MapCountryBusinessUnit findByCountryBusinessUnit(String countryId, String businessUnitId);
 	public void deleteByObject(MapCountryBusinessUnit item);
 }
