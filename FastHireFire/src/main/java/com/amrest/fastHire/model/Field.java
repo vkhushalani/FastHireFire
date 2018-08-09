@@ -49,6 +49,9 @@ public class Field {
 	
 	@Column(name = "\"END_DATE\"",columnDefinition = "SECONDDATE")
     private Date endDate;
+	
+	@Column(name = "\"DESCRIPTION\"",columnDefinition = "VARCHAR(152)")
+    private String description;
 
 	public String getId() {
 		return id;
@@ -136,6 +139,14 @@ public class Field {
 
 	public void setEndDate(Date endDate) {
 		this.endDate = endDate;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
 	}
 	
 	

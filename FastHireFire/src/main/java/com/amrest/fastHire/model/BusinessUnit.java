@@ -30,6 +30,9 @@ public class BusinessUnit {
 	@Column(name = "\"IS_DEFAULT\"",columnDefinition = "BOOLEAN")
     private Boolean isDefault;
 	
+	@Column(name = "\"DESCRIPTION\"",columnDefinition = "VARCHAR(152)")
+    private String description;
+	
 	@Column(name = "\"CREATED_ON\"",columnDefinition = "SECONDDATE")
     private Date createdOn;
 	
@@ -86,6 +89,14 @@ public class BusinessUnit {
 
 	public void setEndDate(Date endDate) {
 		this.endDate = endDate;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
 }
