@@ -38,6 +38,12 @@ public class MapFieldFieldGroup {
 	@JoinColumn(name="\"FIELD.ID\"",referencedColumnName="\"ID\"",insertable=false, updatable=false)
 	private Field field;
 	
+	@Column(name = "\"SF_ENTITY_NAME\"", columnDefinition = "VARCHAR(32)")
+	private String entityName;
+	
+	@Column(name = "\"SF_ENTITY_POST_SEQ\"", columnDefinition = "VARCHAR(32)")
+	private String postSequence;
+	
 	@Column(name = "\"START_DATE\"",columnDefinition = "SECONDDATE")
     private Date startDate;
 	
@@ -98,6 +104,22 @@ public class MapFieldFieldGroup {
 
 	public void setField(Field field) {
 		this.field = field;
+	}
+
+	public String getPostSequence() {
+		return postSequence;
+	}
+
+	public void setPostSequence(String postSequence) {
+		this.postSequence = postSequence;
+	}
+
+	public String getEntityName() {
+		return entityName;
+	}
+
+	public void setEntityName(String entityName) {
+		this.entityName = entityName;
 	}
 
 }

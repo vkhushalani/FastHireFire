@@ -23,10 +23,10 @@ public class MapCountryBusinessUnit {
 	private String id;
 	
 	@Column(name = "\"COUNTRY.ID\"", columnDefinition = "VARCHAR(32)")
-	private Integer countryId;
+	private String countryId;
 	
 	@Column(name = "\"BUSINESS_UNIT.ID\"", columnDefinition = "VARCHAR(32)")
-	private Integer businessUnitId;
+	private String businessUnitId;
 	
 	@Column(name = "\"START_DATE\"",columnDefinition = "SECONDDATE")
     private Date startDate;
@@ -36,22 +36,22 @@ public class MapCountryBusinessUnit {
 	
 	
 
-	public Integer getCountryId() {
+	public String getCountryId() {
 		return countryId;
 	}
 
 
-	public void setCountryId(Integer countryId) {
+	public void setCountryId(String countryId) {
 		this.countryId = countryId;
 	}
 
 
-	public Integer getBusinessUnitId() {
+	public String getBusinessUnitId() {
 		return businessUnitId;
 	}
 
 
-	public void setBusinessUnitId(Integer businessUnitId) {
+	public void setBusinessUnitId(String businessUnitId) {
 		this.businessUnitId = businessUnitId;
 	}
 

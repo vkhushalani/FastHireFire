@@ -20,9 +20,6 @@ public class Field {
 	@Column(name = "\"ID\"", columnDefinition = "VARCHAR(32)")
 	private String id;
 	
-	@Column(name = "\"NAME\"",columnDefinition = "VARCHAR(32)")
-    private String name;
-	
 	@Column(name = "\"TECHNICAL_FIELD_NAME\"",columnDefinition = "VARCHAR(32)")
     private String technicalName;
 	
@@ -31,9 +28,6 @@ public class Field {
 	
 	@Column(name = "\"LENGTH\"",columnDefinition = "INTEGER")
     private Integer length;
-	
-	@Column(name = "\"GLOBAL_HIRE\"",columnDefinition = "VARCHAR(5)")
-    private String globalHire;
 	
 	@Column(name = "\"DEFAULT_VALUE\"",columnDefinition = "VARCHAR(32)")
     private String defaultValue;
@@ -61,13 +55,6 @@ public class Field {
 		this.id = id;
 	}
 
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
 
 	public String getTechnicalName() {
 		return technicalName;
@@ -91,14 +78,6 @@ public class Field {
 
 	public void setLength(Integer length) {
 		this.length = length;
-	}
-
-	public String getGlobalHire() {
-		return globalHire;
-	}
-
-	public void setGlobalHire(String globalHire) {
-		this.globalHire = globalHire;
 	}
 
 	public String getDefaultValue() {
